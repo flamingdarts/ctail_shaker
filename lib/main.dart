@@ -6,7 +6,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'reducers/app_reducer.dart';
 import 'models/app_state.dart';
-import 'cocktail_display_model.dart';
+import 'cocktail_list.dart';
 
 void main() {
   final initialState = AppState(
