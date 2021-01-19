@@ -6,14 +6,14 @@ import 'cocktail.dart';
 
 @immutable
 class AppState {
-  final Cocktail cocktail;
+  final List<Cocktail> cocktails;
 
   const AppState({
-    @required this.cocktail,
+    @required this.cocktails,
   });
 
   dynamic toJson() => {
-    'cocktail': cocktail,
+    'cocktail': cocktails,
   };
 
   @override

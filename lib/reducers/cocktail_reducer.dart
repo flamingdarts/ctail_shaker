@@ -2,8 +2,8 @@ import 'package:ctail_shaker/models/cocktail.dart';
 import 'package:redux/redux.dart';
 import 'package:ctail_shaker/actions/actions.dart';
 
-final cocktailReducer = TypedReducer<Cocktail, AddCocktail>(_addCocktailReducer);
+final cocktailReducer = TypedReducer<List<Cocktail>, AddCocktail>(_addCocktailReducer);
 
-Cocktail _addCocktailReducer(Cocktail state, AddCocktail action) {
-  return action.cocktail;
+List<Cocktail> _addCocktailReducer(List<Cocktail> cocktails, AddCocktail action) {
+  return action.cocktails;
 }

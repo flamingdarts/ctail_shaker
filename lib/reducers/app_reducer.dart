@@ -3,6 +3,6 @@ import '../reducers/cocktail_reducer.dart';
 
 AppState appReducer(AppState state, action) {
   return AppState(
-    cocktail: cocktailReducer(state.cocktail, action),
+    cocktails: cocktailReducer(state.cocktails, action),
   );
 }

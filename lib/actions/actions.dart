@@ -1,7 +1,7 @@
 import 'package:ctail_shaker/models/cocktail.dart';
 
 class AddCocktail {
-  final Cocktail cocktail;
+  final List<Cocktail> cocktails;
 
-  AddCocktail(this.cocktail);
+  AddCocktail(this.cocktails);
 }

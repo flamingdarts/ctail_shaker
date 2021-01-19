@@ -10,9 +10,72 @@ import 'cocktail_display_model.dart';
 
 void main() {
   final initialState = AppState(
-    cocktail: Cocktail(
-      name: "Test Cocktail"
-    ),
+      cocktails: [
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail",
+          description: "This cocktail is about to be awesome",
+        ),
+        Cocktail(
+          name: "Test Cocktail 2",
+          description: "This cocktail is about to be awesome",
+        ),
+      ]
   );
 
   final store = Store<AppState>(
@@ -27,31 +90,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
- @override
+  @override
   Widget build(BuildContext context) {
-   return MaterialApp(
-     title: 'Ctail App',
-     home: Scaffold(
-       appBar: AppBar(
-         title: Text('Ctail Shaker'),
-       ),
-       body: Padding(
-         padding: EdgeInsets.all(20),
-         child: ListView(
-           children: <Widget>[
-             Container(
-               color: Colors.amber,
-               padding: EdgeInsets.only(top: 10, bottom: 10),
-               child: Column(
-                 children: <Widget>[
-                   CocktailDisplayModel(),
-                 ],
-               ),
-             )
-           ],
-         ),
-       ),
-     ),
-   );
+    return MaterialApp(
+      title: 'Ctail App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Ctail Shaker'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(20),
+          child: CocktailList(),
+        ),
+      ),
+    );
   }
 }
