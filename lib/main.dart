@@ -14,66 +14,12 @@ void main() {
         Cocktail(
           name: "Test Cocktail",
           description: "This cocktail is about to be awesome",
+          imageUrl: "https://essenrezept.de/wp-content/uploads/2020/04/Mojito-Rezept.jpg",
         ),
         Cocktail(
           name: "Test Cocktail 2",
           description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail",
-          description: "This cocktail is about to be awesome",
-        ),
-        Cocktail(
-          name: "Test Cocktail 2",
-          description: "This cocktail is about to be awesome",
+          imageUrl: "https://www.lecker.de/assets/styles/610x457/public/field/image/cocktails-b15.jpg?itok=WiWEoVFg"
         ),
       ]
   );
@@ -97,6 +43,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Ctail Shaker'),
+          backgroundColor: Colors.black,
         ),
         body: Padding(
           padding: EdgeInsets.all(20),
