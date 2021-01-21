@@ -6,7 +6,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'reducers/app_reducer.dart';
 import 'models/app_state.dart';
-import 'cocktail_list.dart';
+import 'presentations/cocktail_list.dart';
+import 'models/ingredient.dart';
 
 void main() {
   final initialState = AppState(
@@ -15,11 +16,15 @@ void main() {
           name: "Test Cocktail",
           description: "This cocktail is about to be awesome",
           imageUrl: "https://essenrezept.de/wp-content/uploads/2020/04/Mojito-Rezept.jpg",
+          preparation: "Put it together and shake it yeah",
+          ingredients: [Ingredient(name: "Gin", amount: "3cl" ), Ingredient(name: "Tonic", amount: "125 ml" )],
         ),
         Cocktail(
           name: "Test Cocktail 2",
           description: "This cocktail is about to be awesome",
-          imageUrl: "https://www.lecker.de/assets/styles/610x457/public/field/image/cocktails-b15.jpg?itok=WiWEoVFg"
+          imageUrl: "https://www.lecker.de/assets/styles/610x457/public/field/image/cocktails-b15.jpg?itok=WiWEoVFg",
+          preparation: "Put it together and shake it yeah",
+          ingredients: [Ingredient(name: "Vodka", amount: "3cl" ), Ingredient(name: "Bull", amount: "125 ml" )],
         ),
       ]
   );

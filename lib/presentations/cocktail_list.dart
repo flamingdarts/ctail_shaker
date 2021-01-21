@@ -1,10 +1,11 @@
+import 'package:ctail_shaker/presentations/cocktail_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'models/app_state.dart';
+import '../models/app_state.dart';
 
-import 'selectors/cocktail_selector.dart';
-import 'models/cocktail.dart';
+import '../selectors/cocktail_selector.dart';
+import '../models/cocktail.dart';
 
 class CocktailList extends StatelessWidget {
   @override
@@ -17,6 +18,14 @@ class CocktailList extends StatelessWidget {
           itemCount: cocktails.length,
           itemBuilder: (context, index) {
             return Card(
+                child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return CocktailDetail(cocktail: cocktails[index]);
+                  }),
+                );
+              },
               child: Column(
                 children: <Widget>[
                   Image.network(
@@ -33,7 +42,7 @@ class CocktailList extends StatelessWidget {
                   ),
                 ],
               ),
-            );
+            ));
           },
         );
       },

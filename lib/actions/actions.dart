@@ -5,3 +5,7 @@ class AddCocktail {
 
   AddCocktail(this.cocktails);
 }
+
+class OpenCocktail {
+
+}
