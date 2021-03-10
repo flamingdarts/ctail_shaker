@@ -78,3 +78,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Rochester
+      fonts:
+        - asset: fonts/Rochester-Regular.otf
+    - family: RockSalt
+      fonts:
+        - asset: fonts/RockSalt-Regular.ttf

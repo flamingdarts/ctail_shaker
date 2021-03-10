@@ -13,8 +13,7 @@ class CocktailList extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, List<Cocktail>>(
       distinct: true,
-      converter: (Store<AppState> store) =>
-          cocktailListSelector(store.state),
+      converter: (Store<AppState> store) => cocktailListSelector(store.state),
       builder: (BuildContext context, List<Cocktail> cocktails) {
         return StaggeredGridView.countBuilder(
           crossAxisCount: 2,
@@ -24,25 +23,45 @@ class CocktailList extends StatelessWidget {
               child: Hero(
                 tag: "cocktail$index",
                 child: Card(
-                    child: InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) {
-                        return CocktailDetail(
-                            cocktail: cocktails[index], index: index);
-                      }),
-                    );
-                  },
-                  child: Image.network(
-                    cocktails[index].imageUrl,
-                    fit: BoxFit.cover,
-                  ),
-                )),
+                  semanticContainer: true,
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: GridTile(
+                      header: Container(
+                        color: Colors.black12,
+                        child: ListTile(
+                          leading: Text(cocktails[index].name, style: TextStyle(color: Colors.white, fontSize: 36,)),
+                          trailing: new Icon(Icons.favorite
+                          ),
+                        ),
+                      ),
+                      footer: Container(
+                        color: Colors.black12,
+                        child: ListTile(
+                          leading:  Text("BY " + cocktails[index].author.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'RockSalt')),
+                        ),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) {
+                              return CocktailDetail(
+                                  cocktail: cocktails[index], index: index);
+                            }),
+                          );
+                        },
+                        child: Image.network(
+                          cocktails[index].imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )),
               ),
             );
           },
-          staggeredTileBuilder: (int index) =>
-              StaggeredTile.count(2, 2),
+          staggeredTileBuilder: (int index) => StaggeredTile.count(2, 2),
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
         );
