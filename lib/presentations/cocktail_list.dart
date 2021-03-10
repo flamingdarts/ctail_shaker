@@ -1,4 +1,5 @@
 import 'package:ctail_shaker/presentations/cocktail_detail.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -12,38 +13,35 @@ class CocktailList extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, List<Cocktail>>(
       converter: (Store<AppState> store) =>
-          cocktailNameSelector(store.state.cocktails),
+          cocktailListSelector(store.state),
       builder: (BuildContext context, List<Cocktail> cocktails) {
-        return ListView.builder(
+        return StaggeredGridView.countBuilder(
+          crossAxisCount: 4,
           itemCount: cocktails.length,
           itemBuilder: (context, index) {
-            return Card(
-                child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) {
-                    return CocktailDetail(cocktail: cocktails[index]);
-                  }),
-                );
-              },
-              child: Column(
-                children: <Widget>[
-                  Image.network(
-                    cocktails[index].imageUrl,
-                    fit: BoxFit.contain,
-                  ),
-                  ListTile(
-                    title: Text(cocktails[index].name),
-                    subtitle: Text(cocktails[index].description),
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.horizontal(right: Radius.circular(10)),
-                    ),
-                  ),
-                ],
-              ),
-            ));
+            return Hero(
+              tag: "cocktail$index",
+              child: Card(
+                  child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) {
+                      return CocktailDetail(
+                          cocktail: cocktails[index], index: index);
+                    }),
+                  );
+                },
+                child: Image.network(
+                  cocktails[index].imageUrl,
+                  fit: BoxFit.cover,
+                ),
+              )),
+            );
           },
+          staggeredTileBuilder: (int index) =>
+              StaggeredTile.count(index.isEven ? 2:1, index.isEven ? 2:1),
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
         );
       },
     );
