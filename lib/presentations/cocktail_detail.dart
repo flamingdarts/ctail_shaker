@@ -17,60 +17,60 @@ class CocktailDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+      ),
       backgroundColor: Colors.black,
-      body: Hero(
-        tag: "cocktail$index",
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(
-                top: 16,
-              ),
-              child: Image.network(
-                  cocktail.imageUrl,
-                  height: 300,
-                ),
-              ),
-            Text(
-              "Ingredients:",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(
+              top: 16,
             ),
-            Expanded(
-              child: ListView.builder(
-                  itemCount: cocktail.ingredients.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                        margin: EdgeInsets.only(left: 64),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "\u2022",
-                                  style: TextStyle(fontSize: 32,color: Colors.white),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    cocktail.ingredients[index].name,
-                                    style: TextStyle(fontSize: 18, color: Colors.white),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    cocktail.ingredients[index].amount,
-                                    style: TextStyle(fontSize: 18, color: Colors.white),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ],
-                        ));
-                  }),
+            child: Image.network(
+                cocktail.imageUrl,
+                height: 300,
+              ),
             ),
-            Text(cocktail.preparation),
-          ],
-        ),
+          Text(
+            "Ingredients:",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: cocktail.ingredients.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                      margin: EdgeInsets.only(left: 64),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                "\u2022",
+                                style: TextStyle(fontSize: 32,color: Colors.white),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  cocktail.ingredients[index].name,
+                                  style: TextStyle(fontSize: 18, color: Colors.white),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  cocktail.ingredients[index].amount,
+                                  style: TextStyle(fontSize: 18, color: Colors.white),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ));
+                }),
+          ),
+          Text(cocktail.preparation),
+        ],
       ),
     );
   }

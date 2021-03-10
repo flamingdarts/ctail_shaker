@@ -12,34 +12,37 @@ class CocktailList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, List<Cocktail>>(
+      distinct: true,
       converter: (Store<AppState> store) =>
           cocktailListSelector(store.state),
       builder: (BuildContext context, List<Cocktail> cocktails) {
         return StaggeredGridView.countBuilder(
-          crossAxisCount: 4,
+          crossAxisCount: 2,
           itemCount: cocktails.length,
           itemBuilder: (context, index) {
-            return Hero(
-              tag: "cocktail$index",
-              child: Card(
-                  child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CocktailDetail(
-                          cocktail: cocktails[index], index: index);
-                    }),
-                  );
-                },
-                child: Image.network(
-                  cocktails[index].imageUrl,
-                  fit: BoxFit.cover,
-                ),
-              )),
+            return SizedBox(
+              child: Hero(
+                tag: "cocktail$index",
+                child: Card(
+                    child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) {
+                        return CocktailDetail(
+                            cocktail: cocktails[index], index: index);
+                      }),
+                    );
+                  },
+                  child: Image.network(
+                    cocktails[index].imageUrl,
+                    fit: BoxFit.cover,
+                  ),
+                )),
+              ),
             );
           },
           staggeredTileBuilder: (int index) =>
-              StaggeredTile.count(index.isEven ? 2:1, index.isEven ? 2:1),
+              StaggeredTile.count(2, 2),
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
         );
