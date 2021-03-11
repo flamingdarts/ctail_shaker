@@ -8,7 +8,13 @@ import '../models/app_state.dart';
 import '../selectors/cocktail_selector.dart';
 import '../models/cocktail.dart';
 
-class CocktailList extends StatelessWidget {
+class CocktailList extends StatefulWidget {
+  @override
+  _CocktailListState createState() => _CocktailListState();
+}
+
+class _CocktailListState extends State<CocktailList> {
+  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, List<Cocktail>>(
@@ -23,38 +29,77 @@ class CocktailList extends StatelessWidget {
               child: Hero(
                 tag: "cocktail$index",
                 child: Card(
-                  semanticContainer: true,
+                    semanticContainer: true,
                     clipBehavior: Clip.antiAliasWithSaveLayer,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: GridTile(
-                      header: Container(
-                        color: Colors.black12,
-                        child: ListTile(
-                          leading: Text(cocktails[index].name, style: TextStyle(color: Colors.white, fontSize: 36,)),
-                          trailing: new Icon(Icons.favorite
+                    child: Container(
+                      child: GridTile(
+                        header: Container(
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: <Color>[
+                                  const Color(0x90000000),
+                                  const Color(0x15212121),
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              )
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListTile(
+                              leading: Text(cocktails[index].name,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 36,
+                                  )),
+                              trailing: IconButton(
+                                icon: new Icon(isFavorite ? Icons.favorite : Icons.favorite_border_outlined,
+                                color: Colors.white,),
+                                onPressed: () {
+                                  setState(() {
+                                    isFavorite = !isFavorite;
+                                  });
+                                },
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                      footer: Container(
-                        color: Colors.black12,
-                        child: ListTile(
-                          leading:  Text("BY " + cocktails[index].author.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 18, fontFamily: 'RockSalt')),
+                        footer: Container(
+                          decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: <Color>[
+                                  const Color(0x90000000),
+                                  const Color(0x15212121),
+                                ],
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                              )
+                          ),
+                          child: ListTile(
+                            leading: Text(
+                                "BY ${cocktails[index].author.toUpperCase()}",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontFamily: 'RockSalt')),
+                          ),
                         ),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) {
-                              return CocktailDetail(
-                                  cocktail: cocktails[index], index: index);
-                            }),
-                          );
-                        },
-                        child: Image.network(
-                          cocktails[index].imageUrl,
-                          fit: BoxFit.cover,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) {
+                                return CocktailDetail(
+                                    cocktail: cocktails[index], index: index);
+                              }),
+                            );
+                          },
+                          child: Image.network(
+                            cocktails[index].imageUrl,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     )),
